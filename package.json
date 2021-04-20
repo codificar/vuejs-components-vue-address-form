@@ -2,10 +2,7 @@
   "name": "vue-address-form",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/vue-address-form.ssr.js",
-  "browser": "dist/vue-address-form.esm.js",
-  "module": "dist/vue-address-form.esm.js",
-  "unpkg": "dist/vue-address-form.min.js",
+  "main": "dist/vue-address-form.js",
   "files": [
     "dist/*",
     "src/**/*.vue"
