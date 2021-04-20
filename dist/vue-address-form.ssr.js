@@ -22595,20 +22595,16 @@ var required = {
     validate: validate$o,
     params: params$h,
     computesRequired: computesRequired
-};var trans = function trans(key) {
-  return _.get(window.lang, key, key);
-};
-
-var veeValidate = {
+};var veeValidate = {
   configValidate: function configValidate() {
     extend("required", _objectSpread2(_objectSpread2({}, required), {}, {
-      message: trans("api.required")
+      message: "required"
     }));
     extend("email", _objectSpread2(_objectSpread2({}, email), {}, {
-      message: trans("api.invalid_email")
+      message: "invalid_email"
     }));
     extend("regex", _objectSpread2(_objectSpread2({}, regex), {}, {
-      message: trans("api.invalid_regex")
+      message: "invalid_regex"
     }));
   }
 };veeValidate.configValidate();

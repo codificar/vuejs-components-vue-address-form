@@ -22548,20 +22548,16 @@ var required = {
     computesRequired: computesRequired
 };
 
-let trans = key => {
-  return _.get(window.lang, key, key);
-};
-
 var veeValidate = {
   configValidate() {
     extend("required", { ...required,
-      message: trans("api.required")
+      message: "required"
     });
     extend("email", { ...email,
-      message: trans("api.invalid_email")
+      message: "invalid_email"
     });
     extend("regex", { ...regex,
-      message: trans("api.invalid_regex")
+      message: "invalid_regex"
     });
   }
 

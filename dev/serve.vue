@@ -1,12 +1,12 @@
 <script>
-import Vue from 'vue';
-import VueAddressForm from '@/vue-address-form.vue';
+import Vue from "vue";
+import VueAddressForm from "@/vue-address-form.vue";
 
 export default Vue.extend({
-  name: 'ServeDev',
+  name: "ServeDev",
   components: {
-    VueAddressForm
-  }
+    VueAddressForm,
+  },
 });
 </script>
 
