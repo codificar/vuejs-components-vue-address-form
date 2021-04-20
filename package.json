@@ -19,11 +19,12 @@
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "vee-validate": "^3.4.5",
-    "vue-element-loading": "^1.1.5",
-    "axios": "^0.20.0"
+    "vue-element-loading": "^1.1.6"
   },
   "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@rollup/plugin-alias": "^3.1.1",
