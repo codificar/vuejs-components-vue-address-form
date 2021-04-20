@@ -17524,7 +17524,7 @@ function merge$1(/* obj1, obj2, obj3, ... */) {
  * @param {Object} thisArg The object to bind function to
  * @return {Object} The resulting value of object a
  */
-function extend$1(a, b, thisArg) {
+function extend(a, b, thisArg) {
   forEach(b, function assignValue(val, key) {
     if (thisArg && typeof val === 'function') {
       a[key] = bind(val, thisArg);
@@ -17568,7 +17568,7 @@ var utils = {
   isStandardBrowserEnv: isStandardBrowserEnv,
   forEach: forEach,
   merge: merge$1,
-  extend: extend$1,
+  extend: extend,
   trim: trim,
   stripBOM: stripBOM
 };
@@ -19828,7 +19828,7 @@ var followRedirects = wrap({ http: http, https: https });
 var wrap_1 = wrap;
 followRedirects.wrap = wrap_1;
 
-const _from="axios@^0.20.0";const _id="axios@0.20.0";const _inBundle=false;const _integrity="sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==";const _location="/axios";const _phantomChildren={};const _requested={type:"range",registry:true,raw:"axios@^0.20.0",name:"axios",escapedName:"axios",rawSpec:"^0.20.0",saveSpec:null,fetchSpec:"^0.20.0"};const _requiredBy=["#USER","/"];const _resolved="https://registry.npmjs.org/axios/-/axios-0.20.0.tgz";const _shasum="057ba30f04884694993a8cd07fa394cff11c50bd";const _spec="axios@^0.20.0";const _where="/home/gadsdev/projects/codificar/components/vue-address-form";const author={name:"Matt Zabriskie"};const browser={"./lib/adapters/http.js":"./lib/adapters/xhr.js"};const bugs={url:"https://github.com/axios/axios/issues"};const bundleDependencies=false;const bundlesize=[{path:"./dist/axios.min.js",threshold:"5kB"}];const dependencies={"follow-redirects":"^1.10.0"};const deprecated="Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410";const description="Promise based HTTP client for the browser and node.js";const devDependencies={bundlesize:"^0.17.0",coveralls:"^3.0.0","es6-promise":"^4.2.4",grunt:"^1.0.2","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^20.1.0","grunt-karma":"^2.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^1.0.18","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1",karma:"^1.3.0","karma-chrome-launcher":"^2.2.0","karma-coverage":"^1.1.1","karma-firefox-launcher":"^1.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-opera-launcher":"^1.0.0","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^1.2.0","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.7","karma-webpack":"^1.7.0","load-grunt-tasks":"^3.5.2",minimist:"^1.2.0",mocha:"^5.2.0",sinon:"^4.5.0",typescript:"^2.8.1","url-search-params":"^0.10.0",webpack:"^1.13.1","webpack-dev-server":"^1.14.1"};const homepage="https://github.com/axios/axios";const jsdelivr="dist/axios.min.js";const keywords=["xhr","http","ajax","promise","node"];const license="MIT";const main="index.js";const name="axios";const repository={type:"git",url:"git+https://github.com/axios/axios.git"};const scripts={build:"NODE_ENV=production grunt build",coveralls:"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",examples:"node ./examples/server.js",fix:"eslint --fix lib/**/*.js",postversion:"git push && git push --tags",preversion:"npm test",start:"node ./sandbox/server.js",test:"grunt test && bundlesize",version:"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"};const typings="./index.d.ts";const unpkg="dist/axios.min.js";const version="0.20.0";var pkg = {_from:_from,_id:_id,_inBundle:_inBundle,_integrity:_integrity,_location:_location,_phantomChildren:_phantomChildren,_requested:_requested,_requiredBy:_requiredBy,_resolved:_resolved,_shasum:_shasum,_spec:_spec,_where:_where,author:author,browser:browser,bugs:bugs,bundleDependencies:bundleDependencies,bundlesize:bundlesize,dependencies:dependencies,deprecated:deprecated,description:description,devDependencies:devDependencies,homepage:homepage,jsdelivr:jsdelivr,keywords:keywords,license:license,main:main,name:name,repository:repository,scripts:scripts,typings:typings,unpkg:unpkg,version:version};
+const _args=[["axios@0.20.0","/home/gadsdev/projects/codificar/components/vue-address-form"]];const _from="axios@0.20.0";const _id="axios@0.20.0";const _inBundle=false;const _integrity="sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==";const _location="/axios";const _phantomChildren={};const _requested={type:"version",registry:true,raw:"axios@0.20.0",name:"axios",escapedName:"axios",rawSpec:"0.20.0",saveSpec:null,fetchSpec:"0.20.0"};const _requiredBy=["/"];const _resolved="https://registry.npmjs.org/axios/-/axios-0.20.0.tgz";const _spec="0.20.0";const _where="/home/gadsdev/projects/codificar/components/vue-address-form";const author={name:"Matt Zabriskie"};const browser={"./lib/adapters/http.js":"./lib/adapters/xhr.js"};const bugs={url:"https://github.com/axios/axios/issues"};const bundlesize=[{path:"./dist/axios.min.js",threshold:"5kB"}];const dependencies={"follow-redirects":"^1.10.0"};const description="Promise based HTTP client for the browser and node.js";const devDependencies={bundlesize:"^0.17.0",coveralls:"^3.0.0","es6-promise":"^4.2.4",grunt:"^1.0.2","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^20.1.0","grunt-karma":"^2.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^1.0.18","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1",karma:"^1.3.0","karma-chrome-launcher":"^2.2.0","karma-coverage":"^1.1.1","karma-firefox-launcher":"^1.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-opera-launcher":"^1.0.0","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^1.2.0","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.7","karma-webpack":"^1.7.0","load-grunt-tasks":"^3.5.2",minimist:"^1.2.0",mocha:"^5.2.0",sinon:"^4.5.0",typescript:"^2.8.1","url-search-params":"^0.10.0",webpack:"^1.13.1","webpack-dev-server":"^1.14.1"};const homepage="https://github.com/axios/axios";const jsdelivr="dist/axios.min.js";const keywords=["xhr","http","ajax","promise","node"];const license="MIT";const main="index.js";const name="axios";const repository={type:"git",url:"git+https://github.com/axios/axios.git"};const scripts={build:"NODE_ENV=production grunt build",coveralls:"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",examples:"node ./examples/server.js",fix:"eslint --fix lib/**/*.js",postversion:"git push && git push --tags",preversion:"npm test",start:"node ./sandbox/server.js",test:"grunt test && bundlesize",version:"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"};const typings="./index.d.ts";const unpkg="dist/axios.min.js";const version="0.20.0";var pkg = {_args:_args,_from:_from,_id:_id,_inBundle:_inBundle,_integrity:_integrity,_location:_location,_phantomChildren:_phantomChildren,_requested:_requested,_requiredBy:_requiredBy,_resolved:_resolved,_spec:_spec,_where:_where,author:author,browser:browser,bugs:bugs,bundlesize:bundlesize,dependencies:dependencies,description:description,devDependencies:devDependencies,homepage:homepage,jsdelivr:jsdelivr,keywords:keywords,license:license,main:main,name:name,repository:repository,scripts:scripts,typings:typings,unpkg:unpkg,version:version};
 
 var httpFollow = followRedirects.http;
 var httpsFollow = followRedirects.https;
@@ -20676,10 +20676,10 @@ function isNaN(value) {
     // eslint-disable-next-line
     return value !== value;
 }
-function isNullOrUndefined$1(value) {
+function isNullOrUndefined(value) {
     return value === null || value === undefined;
 }
-function isEmptyArray$1(arr) {
+function isEmptyArray(arr) {
     return Array.isArray(arr) && arr.length === 0;
 }
 var isObject = function (obj) {
@@ -20727,7 +20727,7 @@ function isSpecified(val) {
     if (val === '') {
         return false;
     }
-    return !isNullOrUndefined$1(val);
+    return !isNullOrUndefined(val);
 }
 function isCallable(fn) {
     return typeof fn === 'function';
@@ -20895,36 +20895,6 @@ var RuleContainer = /** @class */ (function () {
     };
     return RuleContainer;
 }());
-/**
- * Adds a custom validator to the list of validation rules.
- */
-function extend(name, schema) {
-    // makes sure new rules are properly formatted.
-    guardExtend(name, schema);
-    // Full schema object.
-    if (typeof schema === 'object') {
-        RuleContainer.extend(name, schema);
-        return;
-    }
-    RuleContainer.extend(name, {
-        validate: schema
-    });
-}
-/**
- * Guards from extension violations.
- */
-function guardExtend(name, validator) {
-    if (isCallable(validator)) {
-        return;
-    }
-    if (isCallable(validator.validate)) {
-        return;
-    }
-    if (RuleContainer.getRuleDefinition(name)) {
-        return;
-    }
-    throw new Error("Extension Error: The validator '" + name + "' must be a function or have a 'validate' method.");
-}
 
 var DEFAULT_CONFIG = {
     defaultMessage: "{_field_} is not valid.",
@@ -21215,7 +21185,7 @@ function _shouldSkip(field, value) {
                     requireRules = Object.keys(field.rules).filter(RuleContainer.isRequireRule);
                     length = requireRules.length;
                     errors = [];
-                    isEmpty = isNullOrUndefined$1(value) || value === '' || isEmptyArray$1(value);
+                    isEmpty = isNullOrUndefined(value) || value === '' || isEmptyArray(value);
                     isEmptyAndOptional = isEmpty && field.skipIfEmpty;
                     isRequired = false;
                     i = 0;
@@ -21566,7 +21536,7 @@ function findModelConfig(vnode) {
 // Adds a listener to vnode listener object.
 function mergeVNodeListeners(obj, eventName, handler) {
     // no listener at all.
-    if (isNullOrUndefined$1(obj[eventName])) {
+    if (isNullOrUndefined(obj[eventName])) {
         obj[eventName] = [handler];
         return;
     }
@@ -21593,7 +21563,7 @@ function addNativeNodeListener(node, eventName, handler) {
     if (!node.data) {
         node.data = {};
     }
-    if (isNullOrUndefined$1(node.data.on)) {
+    if (isNullOrUndefined(node.data.on)) {
         node.data.on = {};
     }
     mergeVNodeListeners(node.data.on, eventName, handler);
@@ -22113,7 +22083,7 @@ function computeClassObj(names, flags) {
         var flag = keys[i];
         var className = (names && names[flag]) || flag;
         var value = flags[flag];
-        if (isNullOrUndefined$1(value)) {
+        if (isNullOrUndefined(value)) {
             return "continue";
         }
         if ((flag === 'valid' || flag === 'invalid') && !flags.validated) {
@@ -22458,113 +22428,7 @@ var vueElementLoading_min = createCommonjsModule(function (module, exports) {
 //# sourceMappingURL=vue-element-loading.min.js.map
 });
 
-/**
-  * vee-validate v3.4.5
-  * (c) 2020 Abdelrahman Awad
-  * @license MIT
-  */
-
-var validate$8 = function (value, _a) {
-    var multiple = (_a === void 0 ? {} : _a).multiple;
-    // eslint-disable-next-line
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (multiple && !Array.isArray(value)) {
-        value = String(value)
-            .split(',')
-            .map(function (emailStr) { return emailStr.trim(); });
-    }
-    if (Array.isArray(value)) {
-        return value.every(function (val) { return re.test(String(val)); });
-    }
-    return re.test(String(value));
-};
-var params$8 = [
-    {
-        name: 'multiple',
-        default: false
-    }
-];
-var email = {
-    validate: validate$8,
-    params: params$8
-};
-
-function isNullOrUndefined(value) {
-    return value === null || value === undefined;
-}
-function isEmptyArray(arr) {
-    return Array.isArray(arr) && arr.length === 0;
-}
-
-var validate$n = function (value, _a) {
-    var regex = _a.regex;
-    if (Array.isArray(value)) {
-        return value.every(function (val) { return validate$n(val, { regex: regex }); });
-    }
-    return regex.test(String(value));
-};
-var params$g = [
-    {
-        name: 'regex',
-        cast: function (value) {
-            if (typeof value === 'string') {
-                return new RegExp(value);
-            }
-            return value;
-        }
-    }
-];
-var regex = {
-    validate: validate$n,
-    params: params$g
-};
-
-var validate$o = function (value, _a) {
-    var allowFalse = (_a === void 0 ? { allowFalse: true } : _a).allowFalse;
-    var result = {
-        valid: false,
-        required: true
-    };
-    if (isNullOrUndefined(value) || isEmptyArray(value)) {
-        return result;
-    }
-    // incase a field considers `false` as an empty value like checkboxes.
-    if (value === false && !allowFalse) {
-        return result;
-    }
-    result.valid = !!String(value).trim().length;
-    return result;
-};
-var computesRequired = true;
-var params$h = [
-    {
-        name: 'allowFalse',
-        default: true
-    }
-];
-var required = {
-    validate: validate$o,
-    params: params$h,
-    computesRequired: computesRequired
-};
-
-var veeValidate = {
-  configValidate() {
-    extend("required", { ...required,
-      message: "required"
-    });
-    extend("email", { ...email,
-      message: "invalid_email"
-    });
-    extend("regex", { ...regex,
-      message: "invalid_regex"
-    });
-  }
-
-};
-
 //
-veeValidate.configValidate();
 var script = {
   components: {
     ValidationObserver,
