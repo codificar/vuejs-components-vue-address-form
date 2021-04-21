@@ -195,6 +195,9 @@ import { debounce } from "lodash";
 import axios from "axios";
 import { ValidationObserver, ValidationProvider } from "vee-validate";
 import VueElementLoading from "vue-element-loading";
+import veeValidate from "../plugins/vee-validate";
+
+veeValidate.configValidate();
 
 export default {
   components: {
@@ -241,7 +244,7 @@ export default {
 
   watch: {
     addressForm: {
-      handler: function(newVal) {
+      handler: function (newVal) {
         this.$emit("input", newVal);
       },
       deep: true,
@@ -304,7 +307,7 @@ export default {
       if (response.success) return response.data;
       return false;
     },
-    handleZipCodeInput: debounce(async function() {
+    handleZipCodeInput: debounce(async function () {
       await this.getZipCodeInfo();
     }, 400),
     async getZipCodeInfo() {
