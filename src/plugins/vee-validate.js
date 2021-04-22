@@ -1,5 +1,6 @@
 import { extend } from "vee-validate";
 import { required, email, regex } from "vee-validate/dist/rules";
+import { _ } from "lodash";
 
 let trans = (key) => {
   return _.get(window.lang, key, key);

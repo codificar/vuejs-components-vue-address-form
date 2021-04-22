@@ -196,7 +196,7 @@ import axios from "axios";
 import { ValidationObserver, ValidationProvider } from "vee-validate";
 import VueElementLoading from "vue-element-loading";
 import veeValidate from "../plugins/vee-validate";
-
+import { _ } from "lodash";
 veeValidate.configValidate();
 
 export default {
@@ -207,13 +207,9 @@ export default {
   },
   name: "VueAddressForm",
   props: {
-    currentAddress: {
+    defaultAddress: {
       type: Object,
       default: () => ({}),
-    },
-    addressesList: {
-      type: Array,
-      default: () => [],
     },
     showAddressName: {
       type: Boolean,
@@ -244,7 +240,7 @@ export default {
 
   watch: {
     addressForm: {
-      handler: function (newVal) {
+      handler: function(newVal) {
         this.$emit("input", newVal);
       },
       deep: true,
@@ -273,6 +269,9 @@ export default {
       },
       loadZipCode: false,
     };
+  },
+  mounted() {
+    this.addressForm = this.defaultAddress;
   },
 
   methods: {
@@ -307,7 +306,7 @@ export default {
       if (response.success) return response.data;
       return false;
     },
-    handleZipCodeInput: debounce(async function () {
+    handleZipCodeInput: debounce(async function() {
       await this.getZipCodeInfo();
     }, 400),
     async getZipCodeInfo() {
