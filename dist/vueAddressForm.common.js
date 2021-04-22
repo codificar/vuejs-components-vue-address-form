@@ -22181,7 +22181,7 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7ce3a0a0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueAddressForm.vue?vue&type=template&id=500f02c7&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7ce3a0a0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueAddressForm.vue?vue&type=template&id=48ae9562&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ValidationObserver',{ref:"zipCodeAddressForm",attrs:{"tag":"form"},on:{"submit":function($event){$event.stopPropagation();$event.preventDefault();return _vm.sendForm()}}},[_c('vue-element-loading',{attrs:{"active":_vm.loadZipCode,"spinner":"spinner","color":"#6666FF"}}),(_vm.showAddressName)?_c('div',{staticClass:"m-2 row"},[_c('div',{staticClass:"col"},[_c('label',[_vm._v(" "+_vm._s(_vm.trans("common_address.location_name"))+"*")]),_c('ValidationProvider',{attrs:{"rules":"required","name":_vm.trans('common_address.location_name')},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var errors = ref.errors;
 return [_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.addressForm.location_name),expression:"addressForm.location_name"}],staticClass:"form-control",attrs:{"type":"text","placeholder":_vm.trans('common_address.location_name')},domProps:{"value":(_vm.addressForm.location_name)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.addressForm, "location_name", $event.target.value)}}}),(!!errors[0])?_c('div',{staticStyle:{"color":"red"}},[_vm._v(" "+_vm._s(errors[0])+" ")]):_vm._e()]}}],null,false,3923256838)})],1)]):_vm._e(),_c('div',{staticClass:"m-2 row"},[_c('div',{staticClass:"col"},[_c('label',[_vm._v(" "+_vm._s(_vm.trans("common_address.zip_code"))+"*")]),_c('ValidationProvider',{directives:[{name:"mask",rawName:"v-mask",value:(['#####-###']),expression:"['#####-###']"}],attrs:{"rules":{ required: true, regex: /[0-9]{5}-[\d]{3}/ },"name":_vm.trans('common_address.zip_code')},scopedSlots:_vm._u([{key:"default",fn:function(ref){
@@ -22202,7 +22202,7 @@ return [_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.addre
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VueAddressForm.vue?vue&type=template&id=500f02c7&
+// CONCATENATED MODULE: ./src/components/VueAddressForm.vue?vue&type=template&id=48ae9562&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
 var es_object_keys = __webpack_require__("b64b");
@@ -25076,21 +25076,22 @@ var rules_double = {
 
 
 
+var _ = __webpack_require__("2ef0");
 
-var vee_validate_trans = function trans(key) {
-  return lodash["_"].get(window.lang, key, key);
+var trans = function trans(key) {
+  return _.get(window.lang, key, key);
 };
 
 /* harmony default export */ var vee_validate = ({
   configValidate: function configValidate() {
     extend("required", _objectSpread2(_objectSpread2({}, required), {}, {
-      message: vee_validate_trans("api.required")
+      message: trans("api.required")
     }));
     extend("email", _objectSpread2(_objectSpread2({}, email), {}, {
-      message: vee_validate_trans("api.invalid_email")
+      message: trans("api.invalid_email")
     }));
     extend("regex", _objectSpread2(_objectSpread2({}, regex), {}, {
-      message: vee_validate_trans("api.invalid_regex")
+      message: trans("api.invalid_regex")
     }));
   }
 });
@@ -25297,8 +25298,10 @@ var vee_validate_trans = function trans(key) {
 
 
 
+var VueAddressFormvue_type_script_lang_js_ = __webpack_require__("2ef0");
+
 vee_validate.configValidate();
-/* harmony default export */ var VueAddressFormvue_type_script_lang_js_ = ({
+/* harmony default export */ var components_VueAddressFormvue_type_script_lang_js_ = ({
   components: {
     ValidationObserver: ValidationObserver,
     ValidationProvider: ValidationProvider,
@@ -25369,11 +25372,11 @@ vee_validate.configValidate();
     };
   },
   mounted: function mounted() {
-    this.addressForm = this.defaultAddress;
+    if (this.defaultAddress) this.addressForm = this.defaultAddress;
   },
   methods: {
     trans: function trans(key) {
-      return lodash["_"].get(window.lang, key, key);
+      return VueAddressFormvue_type_script_lang_js_.get(window.lang, key, key);
     },
     callAutocompleteApi: function callAutocompleteApi(searchString) {
       var _this = this;
@@ -25660,7 +25663,7 @@ vee_validate.configValidate();
   }
 });
 // CONCATENATED MODULE: ./src/components/VueAddressForm.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_VueAddressFormvue_type_script_lang_js_ = (VueAddressFormvue_type_script_lang_js_); 
+ /* harmony default export */ var src_components_VueAddressFormvue_type_script_lang_js_ = (components_VueAddressFormvue_type_script_lang_js_); 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
 
@@ -25770,7 +25773,7 @@ function normalizeComponent (
 /* normalize component */
 
 var component = normalizeComponent(
-  components_VueAddressFormvue_type_script_lang_js_,
+  src_components_VueAddressFormvue_type_script_lang_js_,
   render,
   staticRenderFns,
   false,

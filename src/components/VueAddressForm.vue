@@ -196,7 +196,7 @@ import axios from "axios";
 import { ValidationObserver, ValidationProvider } from "vee-validate";
 import VueElementLoading from "vue-element-loading";
 import veeValidate from "../plugins/vee-validate";
-import { _ } from "lodash";
+const _ = require("lodash");
 veeValidate.configValidate();
 
 export default {
@@ -271,7 +271,7 @@ export default {
     };
   },
   mounted() {
-    this.addressForm = this.defaultAddress;
+    if (this.defaultAddress) this.addressForm = this.defaultAddress;
   },
 
   methods: {
