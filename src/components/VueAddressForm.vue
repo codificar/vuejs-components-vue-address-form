@@ -253,7 +253,7 @@ export default {
         zip_code: "",
         street: "",
         city: "",
-        country: "",
+        country: this.getCountry(),
         district: "",
         state: "",
 
@@ -272,11 +272,24 @@ export default {
   },
   mounted() {
     if (this.defaultAddress) this.addressForm = this.defaultAddress;
+    this.addressForm.country = this.getCountry()
   },
 
   methods: {
     trans(key) {
       return _.get(window.lang, key, key);
+    },
+    getCountry(){
+      switch (window.settings.locale) {
+        case 'pt-br':
+          return "Brasil"
+        case 'en':
+          return "United States"
+        case 'es':
+          return "España"
+        default:
+          return ''
+      }
     },
     async callAutocompleteApi(searchString) {
       const { data: response } = await axios.get(this.autocompleteUrl, {
