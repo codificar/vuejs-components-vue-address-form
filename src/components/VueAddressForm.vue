@@ -181,11 +181,16 @@
         />
       </div>
     </div>
-
-    <div v-if="showFormButton" class="float-right">
-      <button type="submit" class="btn btn-success">
-        <i class="mdi mdi-plus"></i> {{ trans("common_address.add_new") }}
-      </button>
+    <br />
+    <hr />
+    <div class="m-2 row">
+      <div class="col">
+        <div v-if="showFormButton" class="float-right">
+          <button type="submit" class="btn btn-success">
+            <i class="mdi mdi-plus"></i> {{ trans("common_address.add_new") }}
+          </button>
+        </div>
+      </div>
     </div>
   </ValidationObserver>
 </template>
