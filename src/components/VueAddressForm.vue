@@ -35,7 +35,7 @@
         <label> {{ trans("common_address.zip_code") }}*</label>
         <ValidationProvider
           v-slot="{ errors }"
-          v-mask="[onMask ? '#####-###' : false]"
+          v-mask="[this.onMask ? '#####-###' : false]"
           :rules="{ required: true, regex: /[0-9]{5}-[\d]{3}/ }"
           :name="trans('common_address.zip_code')"
         >
@@ -328,7 +328,8 @@ export default {
       await this.getZipCodeInfo();
     }, 400),
     async getZipCodeInfo() {
-      if (this.addressForm.zip_code.length > 6 && onMask) {
+      if (this.addressForm.zip_code.length > 6 && this.onMask) {
+        console.log(this.onMask)
         this.loadZipCode = true;
         try {
           const response = await axios.post(this.zipCodeUrl, {
