@@ -35,8 +35,8 @@
         <label> {{ trans("common_address.zip_code") }}*</label>
         <ValidationProvider
           v-slot="{ errors }"
-          v-mask="[this.onMask ? '#####-###' : false]"
-          :rules="{ required: true, regex: /[0-9]{5}-[\d]{3}/ }"
+          v-mask="[this.onMask ? '#####-###' : 'false']"
+          :rules="{ required: true, regex: this.onMask ? /[0-9]{5}-[\d]{3}/ : null}"
           :name="trans('common_address.zip_code')"
         >
           <input
@@ -325,6 +325,9 @@ export default {
       return false;
     },
     handleZipCodeInput: debounce(async function() {
+
+      console.log(this.onMask)
+      
       await this.getZipCodeInfo();
     }, 400),
     async getZipCodeInfo() {
