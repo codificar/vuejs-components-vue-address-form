@@ -35,7 +35,7 @@
         <label> {{ trans("common_address.zip_code") }}*</label>
         <ValidationProvider
           v-slot="{ errors }"
-          :rules="{ required: true, regex: this.onMask ? /[0-9]{5}-[\d]{3}/ : /[^A-Za-z0-9]+/ }"
+          :rules="{ required: true}"
           :name="trans('common_address.zip_code')"
         >
           <input
@@ -44,7 +44,7 @@
             type="text"
             class="form-control"
             :placeholder="trans('common_address.zip_code')"
-            v-if="onMask" v-mask="[ '#####-###']"
+            v-if="onMask" v-mask="[ '#####-###']" :rules="{regex:/[0-9]{5}-[\d]{3}/}"
           />
           <input v-else type="text" 
             v-model="addressForm.zip_code"

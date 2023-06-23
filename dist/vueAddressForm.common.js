@@ -19088,7 +19088,7 @@ module.exports.default = axios;
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"634b346a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueAddressForm.vue?vue&type=template&id=16d07c59&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"634b346a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueAddressForm.vue?vue&type=template&id=099754d8&
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
@@ -19159,8 +19159,7 @@ var render = function render() {
   }, [_c('label', [_vm._v(" " + _vm._s(_vm.trans("common_address.zip_code")) + "*")]), _c('ValidationProvider', {
     attrs: {
       "rules": {
-        required: true,
-        regex: this.onMask ? /[0-9]{5}-[\d]{3}/ : /[^A-Za-z0-9]+/
+        required: true
       },
       "name": _vm.trans('common_address.zip_code')
     },
@@ -19184,7 +19183,10 @@ var render = function render() {
           staticClass: "form-control",
           attrs: {
             "type": "text",
-            "placeholder": _vm.trans('common_address.zip_code')
+            "placeholder": _vm.trans('common_address.zip_code'),
+            "rules": {
+              regex: /[0-9]{5}-[\d]{3}/
+            }
           },
           domProps: {
             "value": _vm.addressForm.zip_code
@@ -19506,7 +19508,7 @@ var render = function render() {
 };
 var staticRenderFns = [];
 
-// CONCATENATED MODULE: ./src/components/VueAddressForm.vue?vue&type=template&id=16d07c59&
+// CONCATENATED MODULE: ./src/components/VueAddressForm.vue?vue&type=template&id=099754d8&
 
 // EXTERNAL MODULE: ./node_modules/lodash/lodash.js
 var lodash = __webpack_require__("2ef0");
