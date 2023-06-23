@@ -36,7 +36,7 @@
         <ValidationProvider
           v-slot="{ errors }"
           v-mask="[this.onMask ? '#####-###' : null]"
-          :rules="{ required: true, regex: this.onMask ? /[0-9]{5}-[\d]{3}/ : null}"
+          :rules="{ required: true, regex: this.onMask ? /[0-9]{5}-[\d]{3}/ : /[^A-Za-z0-9]+/ }"
           :name="trans('common_address.zip_code')"
         >
           <input
