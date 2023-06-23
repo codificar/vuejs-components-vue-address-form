@@ -46,7 +46,10 @@
             :placeholder="trans('common_address.zip_code')"
             v-if="onMask" v-mask="[ '#####-###']"
           />
-          <input v-else type="text" />
+          <input v-else type="text" 
+            v-model="addressForm.zip_code"
+            class="form-control"
+            :placeholder="trans('common_address.zip_code')"/>
 
           <div v-if="!!errors[0]" style="color: red">
             {{ errors[0] }}
