@@ -19088,7 +19088,7 @@ module.exports.default = axios;
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ec20ccf8-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueAddressForm.vue?vue&type=template&id=56b0897a&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"634b346a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueAddressForm.vue?vue&type=template&id=63b3394a&
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
@@ -19160,13 +19160,13 @@ var render = function render() {
     directives: [{
       name: "mask",
       rawName: "v-mask",
-      value: ['#####-###'],
-      expression: "['#####-###']"
+      value: [this.onMask ? '#####-###' : 'false'],
+      expression: "[this.onMask ? '#####-###' : 'false']"
     }],
     attrs: {
       "rules": {
         required: true,
-        regex: /[0-9]{5}-[\d]{3}/
+        regex: this.onMask ? /[0-9]{5}-[\d]{3}/ : null
       },
       "name": _vm.trans('common_address.zip_code')
     },
@@ -19473,11 +19473,7 @@ var render = function render() {
         _vm.$set(_vm.addressForm, "complement", $event.target.value);
       }
     }
-  })])]), _c('br'), _c('hr'), _c('div', {
-    staticClass: "m-2 row"
-  }, [_c('div', {
-    staticClass: "col"
-  }, [_vm.showFormButton ? _c('div', {
+  })])]), _vm.showFormButton ? _c('div', {
     staticClass: "float-right"
   }, [_c('button', {
     staticClass: "btn btn-success",
@@ -19486,11 +19482,11 @@ var render = function render() {
     }
   }, [_c('i', {
     staticClass: "mdi mdi-plus"
-  }), _vm._v(" " + _vm._s(_vm.trans("common_address.add_new")) + " ")])]) : _vm._e()])])], 1);
+  }), _vm._v(" " + _vm._s(_vm.trans("common_address.add_new")) + " ")])]) : _vm._e()], 1);
 };
 var staticRenderFns = [];
 
-// CONCATENATED MODULE: ./src/components/VueAddressForm.vue?vue&type=template&id=56b0897a&
+// CONCATENATED MODULE: ./src/components/VueAddressForm.vue?vue&type=template&id=63b3394a&
 
 // EXTERNAL MODULE: ./node_modules/lodash/lodash.js
 var lodash = __webpack_require__("2ef0");
@@ -19505,8 +19501,8 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
 
 // CONCATENATED MODULE: ./node_modules/vee-validate/dist/vee-validate.esm.js
 /**
-  * vee-validate v3.4.14
-  * (c) 2021 Abdelrahman Awad
+  * vee-validate v3.4.15
+  * (c) 2023 Abdelrahman Awad
   * @license MIT
   */
 
@@ -20636,7 +20632,7 @@ function getInputEventName(vnode, model) {
     // Is a component.
     if (vnode.componentOptions) {
         var event_1 = (findModelConfig(vnode) || { event: 'input' }).event;
-        return event_1;
+        return event_1 || 'input';
     }
     // Lazy Models typically use change event
     if ((_a = model === null || model === void 0 ? void 0 : model.modifiers) === null || _a === void 0 ? void 0 : _a.lazy) {
@@ -21536,7 +21532,7 @@ function withValidation(component, mapProps) {
     return hoc;
 }
 
-var version = '3.4.14';
+var version = '3.4.15';
 
 
 
@@ -21546,8 +21542,8 @@ var vue_element_loading_min_default = /*#__PURE__*/__webpack_require__.n(vue_ele
 
 // CONCATENATED MODULE: ./node_modules/vee-validate/dist/rules.js
 /**
-  * vee-validate v3.4.14
-  * (c) 2021 Abdelrahman Awad
+  * vee-validate v3.4.15
+  * (c) 2023 Abdelrahman Awad
   * @license MIT
   */
 /**
@@ -22346,6 +22342,10 @@ vee_validate.configValidate();
     zipCodeUrl: {
       type: String,
       required: true
+    },
+    onMask: {
+      type: Boolean,
+      default: () => true
     }
   },
   watch: {
@@ -22376,6 +22376,7 @@ vee_validate.configValidate();
     };
   },
   mounted() {
+    console.log('teste', this.onMask);
     if (this.defaultAddress) this.addressForm = this.defaultAddress;
     this.addressForm.country = this.getCountry();
   },
@@ -22396,6 +22397,7 @@ vee_validate.configValidate();
       }
     },
     async callAutocompleteApi(searchString) {
+      console.log('teste', this.onMask);
       const {
         data: response
       } = await axios_default.a.get(this.autocompleteUrl, {
@@ -22431,10 +22433,12 @@ vee_validate.configValidate();
       return false;
     },
     handleZipCodeInput: Object(lodash["debounce"])(async function () {
+      console.log(this.onMask);
       await this.getZipCodeInfo();
     }, 400),
     async getZipCodeInfo() {
-      if (this.addressForm.zip_code.length > 6) {
+      if (this.addressForm.zip_code.length > 6 && this.onMask) {
+        console.log(this.onMask);
         this.loadZipCode = true;
         try {
           const response = await axios_default.a.post(this.zipCodeUrl, {
