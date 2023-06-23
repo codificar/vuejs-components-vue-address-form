@@ -276,7 +276,7 @@ export default {
     };
   },
   mounted() {
-    console.log(this.onMask)
+    console.log('teste',this.onMask)
     if (this.defaultAddress) this.addressForm = this.defaultAddress;
     this.addressForm.country = this.getCountry()
   },
@@ -298,6 +298,7 @@ export default {
       }
     },
     async callAutocompleteApi(searchString) {
+      console.log('teste', this.onMask)
       const { data: response } = await axios.get(this.autocompleteUrl, {
         params: { ...this.autocompleteParams, place: searchString },
       });
