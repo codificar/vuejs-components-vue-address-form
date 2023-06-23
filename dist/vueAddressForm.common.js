@@ -19088,7 +19088,7 @@ module.exports.default = axios;
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"634b346a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueAddressForm.vue?vue&type=template&id=63b3394a&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"634b346a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueAddressForm.vue?vue&type=template&id=45bfbc30&
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
@@ -19160,8 +19160,8 @@ var render = function render() {
     directives: [{
       name: "mask",
       rawName: "v-mask",
-      value: [this.onMask ? '#####-###' : 'false'],
-      expression: "[this.onMask ? '#####-###' : 'false']"
+      value: [this.onMask ? '#####-###' : null],
+      expression: "[this.onMask ? '#####-###' : null]"
     }],
     attrs: {
       "rules": {
@@ -19486,7 +19486,7 @@ var render = function render() {
 };
 var staticRenderFns = [];
 
-// CONCATENATED MODULE: ./src/components/VueAddressForm.vue?vue&type=template&id=63b3394a&
+// CONCATENATED MODULE: ./src/components/VueAddressForm.vue?vue&type=template&id=45bfbc30&
 
 // EXTERNAL MODULE: ./node_modules/lodash/lodash.js
 var lodash = __webpack_require__("2ef0");
@@ -22376,7 +22376,6 @@ vee_validate.configValidate();
     };
   },
   mounted() {
-    console.log('teste', this.onMask);
     if (this.defaultAddress) this.addressForm = this.defaultAddress;
     this.addressForm.country = this.getCountry();
   },
@@ -22397,7 +22396,6 @@ vee_validate.configValidate();
       }
     },
     async callAutocompleteApi(searchString) {
-      console.log('teste', this.onMask);
       const {
         data: response
       } = await axios_default.a.get(this.autocompleteUrl, {
@@ -22433,12 +22431,10 @@ vee_validate.configValidate();
       return false;
     },
     handleZipCodeInput: Object(lodash["debounce"])(async function () {
-      console.log(this.onMask);
       await this.getZipCodeInfo();
     }, 400),
     async getZipCodeInfo() {
       if (this.addressForm.zip_code.length > 6 && this.onMask) {
-        console.log(this.onMask);
         this.loadZipCode = true;
         try {
           const response = await axios_default.a.post(this.zipCodeUrl, {
