@@ -35,7 +35,7 @@
         <label> {{ trans("common_address.zip_code") }}*</label>
         <ValidationProvider
           v-slot="{ errors }"
-          v-mask="[this.onMask ? '#####-###' : 'false']"
+          v-mask="[this.onMask ? '#####-###' : null]"
           :rules="{ required: true, regex: this.onMask ? /[0-9]{5}-[\d]{3}/ : null}"
           :name="trans('common_address.zip_code')"
         >
@@ -276,7 +276,6 @@ export default {
     };
   },
   mounted() {
-    console.log('teste',this.onMask)
     if (this.defaultAddress) this.addressForm = this.defaultAddress;
     this.addressForm.country = this.getCountry()
   },
@@ -298,7 +297,6 @@ export default {
       }
     },
     async callAutocompleteApi(searchString) {
-      console.log('teste', this.onMask)
       const { data: response } = await axios.get(this.autocompleteUrl, {
         params: { ...this.autocompleteParams, place: searchString },
       });
@@ -327,14 +325,11 @@ export default {
       return false;
     },
     handleZipCodeInput: debounce(async function() {
-
-      console.log(this.onMask)
       
       await this.getZipCodeInfo();
     }, 400),
     async getZipCodeInfo() {
       if (this.addressForm.zip_code.length > 6 && this.onMask) {
-        console.log(this.onMask)
         this.loadZipCode = true;
         try {
           const response = await axios.post(this.zipCodeUrl, {
