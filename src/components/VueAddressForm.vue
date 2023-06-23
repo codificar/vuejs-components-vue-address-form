@@ -276,6 +276,7 @@ export default {
     };
   },
   mounted() {
+    console.log(this.onMask)
     if (this.defaultAddress) this.addressForm = this.defaultAddress;
     this.addressForm.country = this.getCountry()
   },
