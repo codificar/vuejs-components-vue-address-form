@@ -35,8 +35,7 @@
         <label> {{ trans("common_address.zip_code") }}*</label>
         <ValidationProvider
           v-slot="{ errors }"
-          v-mask="['#####-###']"
-          :rules="{ required: true, regex: /[0-9]{5}-[\d]{3}/ }"
+          :rules="{ required: true}"
           :name="trans('common_address.zip_code')"
         >
           <input
@@ -45,7 +44,14 @@
             type="text"
             class="form-control"
             :placeholder="trans('common_address.zip_code')"
+            v-if="onMask" v-mask="[ '#####-###']" :rules="{regex:/[0-9]{5}-[\d]{3}/}"
           />
+          <input v-else type="text" 
+            @blur="getZipCodeInfo"
+            v-model="addressForm.zip_code"
+            class="form-control"
+            :placeholder="trans('common_address.zip_code')"/>
+
           <div v-if="!!errors[0]" style="color: red">
             {{ errors[0] }}
           </div>
@@ -236,6 +242,11 @@ export default {
       type: String,
       required: true,
     },
+
+    onMask:{
+      type: Boolean,
+      default: () => true,
+    }
   },
 
   watch: {
@@ -283,6 +294,8 @@ export default {
       switch (window.settings.locale) {
         case 'pt-br':
           return "Brasil"
+        case 'en-gb':
+          return "United Kingdom"
         case 'en':
           return "United States"
         case 'es':
@@ -320,10 +333,11 @@ export default {
       return false;
     },
     handleZipCodeInput: debounce(async function() {
+      
       await this.getZipCodeInfo();
     }, 400),
     async getZipCodeInfo() {
-      if (this.addressForm.zip_code.length > 6) {
+      if (this.addressForm.zip_code.length > 6 && this.onMask) {
         this.loadZipCode = true;
         try {
           const response = await axios.post(this.zipCodeUrl, {
@@ -338,6 +352,39 @@ export default {
             this.addressForm.state = data.state;
             this.addressForm.latitude = data.latitude;
             this.addressForm.longitude = data.longitude;
+          }
+        } catch (error) {
+          this.loadZipCode = false;
+          this.addressForm.latitude = "";
+          this.addressForm.longitude = "";
+          this.$toasted.show(this.trans("common_address.zip_code_not_found"), {
+            theme: "bubble",
+            type: "warning",
+            position: "bottom-center",
+            duration: 5000,
+          });
+        }
+      }else{
+        this.loadZipCode = true;
+        try {
+          const response = await axios.post(this.zipCodeUrl, {
+            address: this.addressForm.zip_code,
+          });
+          this.loadZipCode = false;
+          if (response.status === 200 && response.data.success) {
+            const data = response.data;
+            this.addressForm.latitude = data.latitude;
+            this.addressForm.longitude = data.longitude;
+          }else{
+            this.loadZipCode = false;
+            this.addressForm.latitude = "";
+            this.addressForm.longitude = "";
+            this.$toasted.show(this.trans("common_address.zip_code_not_found"), {
+              theme: "bubble",
+              type: "warning",
+              position: "bottom-center",
+              duration: 5000,
+            });
           }
         } catch (error) {
           this.loadZipCode = false;
@@ -373,6 +420,7 @@ export default {
       };
     },
     async validateForm() {
+      await this.getZipCodeInfo()
       const validator = await this.$refs.zipCodeAddressForm.validate();
       if (validator && this.addressForm.latitude && this.addressForm.longitude)
         return true;
