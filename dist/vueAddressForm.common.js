@@ -19088,7 +19088,7 @@ module.exports.default = axios;
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"634b346a-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueAddressForm.vue?vue&type=template&id=099754d8&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"43accdce-vue-loader-template"}!./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueAddressForm.vue?vue&type=template&id=cc7f73e6&
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
@@ -19214,6 +19214,7 @@ var render = function render() {
             "value": _vm.addressForm.zip_code
           },
           on: {
+            "blur": _vm.getZipCodeInfo,
             "input": function ($event) {
               if ($event.target.composing) return;
               _vm.$set(_vm.addressForm, "zip_code", $event.target.value);
@@ -19508,7 +19509,7 @@ var render = function render() {
 };
 var staticRenderFns = [];
 
-// CONCATENATED MODULE: ./src/components/VueAddressForm.vue?vue&type=template&id=099754d8&
+// CONCATENATED MODULE: ./src/components/VueAddressForm.vue?vue&type=template&id=cc7f73e6&
 
 // EXTERNAL MODULE: ./node_modules/lodash/lodash.js
 var lodash = __webpack_require__("2ef0");
@@ -22409,6 +22410,8 @@ vee_validate.configValidate();
       switch (window.settings.locale) {
         case 'pt-br':
           return "Brasil";
+        case 'en-gb':
+          return "United Kingdom";
         case 'en':
           return "United States";
         case 'es':
@@ -22483,6 +22486,39 @@ vee_validate.configValidate();
             duration: 5000
           });
         }
+      } else {
+        this.loadZipCode = true;
+        try {
+          const response = await axios_default.a.post(this.zipCodeUrl, {
+            address: this.addressForm.zip_code
+          });
+          this.loadZipCode = false;
+          if (response.status === 200 && response.data.success) {
+            const data = response.data;
+            this.addressForm.latitude = data.latitude;
+            this.addressForm.longitude = data.longitude;
+          } else {
+            this.loadZipCode = false;
+            this.addressForm.latitude = "";
+            this.addressForm.longitude = "";
+            this.$toasted.show(this.trans("common_address.zip_code_not_found"), {
+              theme: "bubble",
+              type: "warning",
+              position: "bottom-center",
+              duration: 5000
+            });
+          }
+        } catch (error) {
+          this.loadZipCode = false;
+          this.addressForm.latitude = "";
+          this.addressForm.longitude = "";
+          this.$toasted.show(this.trans("common_address.zip_code_not_found"), {
+            theme: "bubble",
+            type: "warning",
+            position: "bottom-center",
+            duration: 5000
+          });
+        }
       }
     },
     resetForm() {
@@ -22502,6 +22538,7 @@ vee_validate.configValidate();
       };
     },
     async validateForm() {
+      await this.getZipCodeInfo();
       const validator = await this.$refs.zipCodeAddressForm.validate();
       if (validator && this.addressForm.latitude && this.addressForm.longitude) return true;
       return false;
